@@ -22,6 +22,6 @@ jobs:
       - run: make site
 
       - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@4
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: .
