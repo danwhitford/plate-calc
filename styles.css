@@ -1,0 +1,54 @@
+.plate {
+    border: 1px solid black;
+    border-radius: 4px;
+}
+
+.bumper {
+    height: 20px;
+    width: 100px;
+}
+
+.training {
+    height: 10px;
+    width: 50px;
+}
+
+.kg25 {
+    background-color: red;
+}
+
+.kg20 {
+    background-color: blue;
+}
+
+.kg15 {
+    background-color: yellow;
+}
+
+.kg10 {
+    background-color: green;
+}
+
+.kg5 {
+    background-color: white;
+}
+
+.kg2-5 {
+    background-color: red;
+}
+
+.kg2 {
+    background-color: blue;
+}
+
+.kg1-5 {
+    background-color: yellow;
+}
+
+.kg1 {
+    background-color: green;
+}
+
+.kg0-5 {
+    background-color: white;
+}
