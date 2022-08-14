@@ -11,7 +11,7 @@ type PlateHeap []Path
 var PLATES []float32 = []float32{25, 20, 15, 10, 5, 2.5, 1, 0.5}
 
 func NewHeap(target float32) *PlateHeap {
-	var paths []Path = make([]Path, len(PLATES))
+	var paths PlateHeap = make([]Path, len(PLATES))
 	for i, v := range PLATES {
 		if v <= target {
 			paths[i] = []float32{v}
@@ -33,21 +33,18 @@ func total(h Path) float32 {
 func (h PlateHeap) Len() int      { return len(h) }
 func (h PlateHeap) Swap(i, j int) { h[i], h[j] = h[j], h[i] }
 func (h PlateHeap) Less(i, j int) bool {
-	a := (h.target - total(h.paths[i]))
-	b := (h.target - total(h.paths[j]))
-
-	return a < b
+	return total(h[i]) > total(h[j])
 }
 
 func (h *PlateHeap) Push(x any) {
-	h.paths = append(h.paths, x.(Path))
+	*h = append(*h, x.(Path))
 }
 
 func (h *PlateHeap) Pop() any {
-	old := h.paths
+	old := *h
 	n := len(old)
 	x := old[n-1]
-	h.paths = old[0 : n-1]
+	*h = old[0 : n-1]
 	return x
 }
 
@@ -61,18 +58,18 @@ func find_neighbours(target, tot float32) []float32 {
 	return ret
 }
 
-func GetPlatesForWeight(weight float32) []float32 {
-	pq := NewHeap(weight)
+func GetPlatesForWeight(target float32) []float32 {
+	pq := NewHeap(target)
 
 	for {
 		head := heap.Pop(pq).(Path)
 		fmt.Printf("Trying %v\n", head)
 		tot := total(head)
-		if tot == pq.target {
+		if tot == target {
 			return head			
 		}
 
-		neighbours := find_neighbours(pq.target, tot)
+		neighbours := find_neighbours(target, tot)
 		for _, v := range neighbours {
 			sl := make(Path, len(head))
 			copy(sl, head)
