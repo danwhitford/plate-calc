@@ -15,11 +15,13 @@ jobs:
       - name: Checkout 🛎️
         uses: actions/checkout@v3
 
-      - name: Build site 🔧
+      - name: Set up Go
         uses: actions/setup-go@v2
         with:
           go-version: '1.18' # The Go version to download (if necessary) and use.
-        run: make site
+      
+      - name: Build site 🔧
+        run: make site    
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
