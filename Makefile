@@ -12,5 +12,4 @@ wasm_exec.js:
 .PHONY site: main.wasm wasm_exec.js
 
 .PHONY test:
-	export PATH="$PATH:$(go env GOROOT)/misc/wasm"
-	GOOS=js GOARCH=wasm go test -v ./...
+	PATH="$$PATH:$(shell go env GOROOT)/misc/wasm" GOOS=js GOARCH=wasm go test -v ./...
