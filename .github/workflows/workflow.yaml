@@ -30,6 +30,9 @@ jobs:
         with:
           go-version: '1.18' # The Go version to download (if necessary) and use.
       
+      - name: Run tests
+        run: make test
+
       - name: Build site 🔧
         run: make site    
 

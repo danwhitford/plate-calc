@@ -12,7 +12,7 @@ func TestA(t *testing.T) {
 	}
 	tests := []test{
 		{20, []float64{20}},
-		{42, []float64{25, 15, 1, 1}},
+		{42, []float64{25, 15, 2}},
 	}
 
 	for _, candidate := range tests {
@@ -36,7 +36,7 @@ func TestB(t *testing.T) {
 	}
 
 	for _, candidate := range tests {
-		res := GetPlatesForBar(candidate.input)
+		res := GetPlatesForBar(candidate.input, 20)
 		if !reflect.DeepEqual(res, candidate.expected) {
 			t.Fatalf(`Wanted %v got %v`, candidate.expected, res)
 		}
