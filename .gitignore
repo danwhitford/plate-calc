@@ -1,2 +1,4 @@
 wasm_exec.js
 *.wasm
+go_js_wasm_exec
+wasm_exec_node.js

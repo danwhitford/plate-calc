@@ -9,7 +9,13 @@ main.wasm:
 wasm_exec.js:
 	cp "$(GOROOT)/misc/wasm/wasm_exec.js" .
 
+go_js_wasm_exec:
+	cp "$(GOROOT)/misc/wasm/go_js_wasm_exec" .
+
+wasm_exec_node.js:
+	cp "$(GOROOT)/misc/wasm/wasm_exec_node.js" .
+
 .PHONY site: main.wasm wasm_exec.js
 
-.PHONY test:
-	PATH="$$PATH:$(shell go env GOROOT)/misc/wasm" GOOS=js GOARCH=wasm go test -v ./...
+.PHONY test: go_js_wasm_exec wasm_exec_node.js wasm_exec.js
+	PATH="$$PATH:$(shell pwd)" GOOS=js GOARCH=wasm go test -v ./...
